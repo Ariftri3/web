@@ -6,6 +6,7 @@
 html {
     margin: 0;
     padding: 0;
+    background-color: #dedede;
     scroll-behavior: smooth;
 }
 body {
@@ -18,6 +19,16 @@ body {
 }
 .layar-penuh {
     width: 100%;
+    margin: auto;
+}
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 nav {
     z-index: 100;
@@ -32,14 +43,17 @@ nav {
 nav.putih {
     background-color: #fff;
 }
+nav.putih ul li a {
+    color: #333;
+}
 nav .logo {
     float: left;
-    color: #fff;
     position: relative;
+    color: #fff;
     line-height: 55px;
     text-align: center;
 }
-nav .logo img{
+nav .logo img {
     vertical-align: middle;
     width: 120px;
 }
@@ -48,7 +62,6 @@ nav .menu {
     height: 60px;
     max-width: 600px;
 }
-
 nav .menu ul {
     list-style-type: none;
     margin: 0;
@@ -63,14 +76,12 @@ nav .menu ul li {
 nav ul li a {
     color: #fff;
     text-align: center;
-    padding: 0px 16px 0px 16px;
+    padding: 0 16px;
     text-decoration: none;
-  
 }
 nav ul li a:hover {
-    text-decoration: underline; 
+    text-decoration: underline;
 }
-/* pengaturan header */
 header {
     position: relative;
     height: 100vh;
@@ -80,17 +91,10 @@ header {
 }
 header video {
     position: absolute;
-    top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
     object-fit: cover;
-    z-index: -1;
-}
-.container {
-    position: relative;
-    z-index: 1;
-    color: #fff;
+    z-index: -2;
 }
 header .intro {
     z-index: 100;
@@ -108,10 +112,10 @@ header .intro h3 {
     background-color: #c86b85;
     height: 40px;
     line-height: 42px;
-    color: #fff;
     text-decoration: none;
-    display:inline-block;
-    padding: 0px 20px 0px 20px;
+    color: #fff;
+    display: inline-block;
+    padding: 0 20px;
     font-size: 15px;
     border-radius: 4px;
 }
@@ -122,24 +126,25 @@ header .overlay {
     height: 100%;
     width: 100%;
     background-color: #000;
-    opacity: 50%;
+    opacity: 0.5;
     z-index: -1;
 }
-.tombol-menu{
+.tombol-menu {
     position: absolute;
-    top:1.7rem;
+    top: 1.7rem;
     right: 1rem;
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 20px;
+    display: none;
 }
 .tombol-menu .garis {
     height: 3px;
-    background-color:#fff;
+    background-color: #fff;
 }
 section {
-    padding: 50px 0px 50px 0px;
+    padding: 50px 0;
 }
 section h3 {
     font-size: 30px;
@@ -151,136 +156,95 @@ section h3::after {
     display: block;
     margin: 20px auto;
 }
-#aboutus,
-#team,
-#blog {
+#aboutus {
     text-align: center;
 }
 section p.ringkasan {
     font-style: italic;
     font-size: 18px;
-    color: #ababaa
+    color: #ababab;
 }
 section .konten-isi p {
     font-style: normal;
 }
-nav.putih {
-    background-color: #fff;
+#recommendations {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+    text-align: center;
 }
-nav.putih .tombol-menu .garis {
-    background-color: #333;
+#recommendations h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
 }
-
-nav .logo img.hitam {
+.recommendation-gallery {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+}
+.recommendation-gallery::-webkit-scrollbar {
     display: none;
 }
-section.abuabu {
-    background-color: #f5f6f6;
+.recommendation-item {
+    flex: 0 0 auto;
+    width: 250px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s;
 }
-.Support,
-.tim,
-.blog {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+.recommendation-item:hover {
+    transform: scale(1.05);
 }
-.Support h6,
-.tim h6 {
-    margin: 0px;
-    margin-top: 20px;
-    padding: 0px;
+.recommendation-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+.recommendation-item h4 {
     font-size: 18px;
-    font-weight: bold;
+    color: #333;
+    margin: 10px 0 5px;
 }
-.Support img {
-    width: 50px;
-}
-.Support div,
-.tim div {
-    text-align: center;
-    width: 26%;
+.recommendation-item p {
+    font-size: 14px;
+    color: #666;
+    padding: 0 10px 10px;
+    line-height: 1.5;
 }
 section#gallery {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    overflow: hidden;
-    padding: 10px 0px 10px 0px;
+    overflow-x: auto;
+    padding: 10px 0;
+    gap: 5px;
+    scroll-behavior: smooth;
+}
+section#gallery::-webkit-scrollbar {
+    display: none;
 }
 section#gallery div {
-    padding: 10px
+    min-width: 200px;
+    padding: 10px;
+    flex-shrink: 0;
 }
 section#gallery div img {
-    height: 100px;
+    margin: 0;
+    height: 250px;
     border-radius: 5px;
 }
 section#gallery div img:hover {
     transition: all 0.2s ease-in-out;
     transform: scale(1.1);
 }
-section.quote {
-    background:url('asset/background-bromo.jpg') no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    text-align: center;
+#footer {
+    background-color: #2C3E50;
     color: #fff;
-    font-size: 20px;
-    font-style: italic;
-    padding: 100px;
-}
-.tim img {
-    width: 100%;
-    box-shadow: 0px -10px 30px #ccc;
-    border-radius: 5px;
-}
-footer {
-    padding: 50px 0px 50px 0px;
-    background-color: #343a40;
-    color: #fff;
-}
-footer .layar-dalam {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-footer .layar-dalam div {
-    width: 20%;
-}
-footer .layar-dalam h5 {
-    margin-top: 0px;
-    font-size: 20px;
-    font-weight: bold;
-}
-footer .layar-dalam .copyright {
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid #666;
+    padding: 30px 0;
     text-align: center;
-}
-@media  screen and (max-width: 991.98px) {
-    .layar-dalam {
-        width: 90%;
-    }
-    nav .menu ul {
-        display: none;
-        margin-top: 60px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-    nav .menu ul li {
-        width: 100%;
-        border-bottom: 1px solid #ccc;
-        background-color: #fff;
-        line-height: 40px;
-    }
-    nav .menu ul li a {
-        color: #333;
-    }
-    .tombol-menu {
-        display: flex;
-    }
+    margin-top: 50px;
 }
